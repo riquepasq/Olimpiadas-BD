@@ -180,23 +180,23 @@ INSERT INTO LESAO (NroLesao, Descricao) VALUES (1, 'Distensão muscular');
 INSERT INTO LESAO (NroLesao, Descricao) VALUES (2, 'Estiramento');
 INSERT INTO LESAO (NroLesao, Descricao) VALUES (3, 'Luxação');
 
-INSERT INTO ATENDIMENTO_LESAO(Atleta, Lesao, Medico) VALUES (1, 1, 1);
-INSERT INTO ATENDIMENTO_LESAO(Atleta, Lesao, Medico) VALUES (2, 2, 2);
-INSERT INTO ATENDIMENTO_LESAO(Atleta, Lesao, Medico) VALUES (3, 3, 3);
+INSERT INTO ATENDIMENTO_LESAO(Atleta, Lesao, Medico) VALUES (1, 1, 4);
+INSERT INTO ATENDIMENTO_LESAO(Atleta, Lesao, Medico) VALUES (2, 2, 5);
+INSERT INTO ATENDIMENTO_LESAO(Atleta, Lesao, Medico) VALUES (3, 3, 6);
 
 INSERT INTO ATENDIMENTO_DOPING(NroDoping, Atleta, Medico, Data, Resultados)
-    VALUES (1, 1, 1, TO_DATE('2017/04/03', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
+    VALUES (1, 1, 4, TO_DATE('2017/04/03', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
 INSERT INTO ATENDIMENTO_DOPING(NroDoping, Atleta, Medico, Data, Resultados)
-    VALUES (2, 2, 2, TO_DATE('2017/06/14', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
+    VALUES (2, 2, 5, TO_DATE('2017/06/14', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
 INSERT INTO ATENDIMENTO_DOPING(NroDoping, Atleta, Medico, Data, Resultados)
-    VALUES (3, 3, 3, TO_DATE('2017/05/11', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
+    VALUES (3, 3, 6, TO_DATE('2017/05/11', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
 
 INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
-    VALUES (1, 1, 1, TO_DATE('2017/05/12', 'yyyy/mm/dd'));
+    VALUES (1, 1, 4, TO_DATE('2017/05/12', 'yyyy/mm/dd'));
 INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
-    VALUES (2, 2, 2, TO_DATE('2016/12/23', 'yyyy/mm/dd'));
+    VALUES (2, 2, 5, TO_DATE('2016/12/23', 'yyyy/mm/dd'));
 INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
-    VALUES (3, 3, 3, TO_DATE('2017/04/01', 'yyyy/mm/dd'));
+    VALUES (3, 3, 6, TO_DATE('2017/04/01', 'yyyy/mm/dd'));
     
 INSERT INTO SINTOMAS (CodConsulta, Sintoma)
     VALUES (1, 'Coceira intensa e ardor, falta de ar e dificuldade para engolir e falar');

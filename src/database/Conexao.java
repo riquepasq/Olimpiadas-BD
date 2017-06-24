@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class Conexao {
     private Connection conn; 
-    private String username = "h8532252";
-    private String password = "8532252";
+    private String username = "e9778536";
+    private String password = "9085583";
     public Conexao(){
         String driver = "thin";
         String hostname = "grad.icmc.usp.br";
