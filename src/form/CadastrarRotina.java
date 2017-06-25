@@ -8,6 +8,7 @@ package form;
 import database.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import java.util.Objects;
@@ -104,8 +105,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado" }));
-
         jLabel10.setText("Tempo de repetição (dias)*");
 
         jComboBox3.setToolTipText("");
@@ -140,7 +139,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem6);
-        jMenuItem6.getAccessibleContext().setAccessibleName("Deletar Rotina");
 
         jMenuItem7.setText("Listar Rotinas");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -280,12 +278,7 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Preparador preparador = new Preparador();
-        Participante participante = new Participante();
-        Nacao nacao = new Nacao();
-        Rotina rotina = new Rotina();
         RotinaDAO rotDAO = new RotinaDAO();
-        Modalidade modalidade = new Modalidade();
         System.out.println(jTextArea2.getText());
         try{
             if (rotDAO.inserirRotina(jComboBox3.getModel().getSelectedItem().toString(), 
@@ -297,6 +290,9 @@ public class CadastrarRotina extends javax.swing.JFrame {
             else{
                  jLabel5.setText("Falha a cadastrar");
             }
+            populateDays();
+            jTextField2.setText("");
+            jTextArea2.setText("");
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
@@ -349,13 +345,70 @@ public class CadastrarRotina extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-            // TODO add your handling code here:
-            updateNamePrep();
-            jComboBox1.removeAllItems();
-            populateAtletas(jComboBox3.getSelectedItem().toString());
+        // TODO add your handling code here:
+        updateNamePrep();
+        jComboBox1.removeAllItems();
+        populateAtletas(jComboBox3.getSelectedItem().toString());
+        try {
+            populateDays();
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrarRotina.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jComboBox3ActionPerformed
-  
-    public void populatePreps() throws SQLException {
+    public synchronized void populateDays() throws SQLException {
+        List<Rotina> list = null;
+        RotinaDAO rDAO = new RotinaDAO();
+        String prep = jComboBox3.getSelectedItem().toString();
+        String atleta = jComboBox1.getSelectedItem().toString();
+        List<String> allDays = Arrays.asList("Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado");
+        jComboBox2.removeAllItems();
+        int j = 0;
+        while (j < allDays.size()) {
+            jComboBox2.addItem(allDays.get(j));
+            j++;
+        }
+        
+        try {
+            list = rDAO.getRotinas();
+            int i = 0;
+            //System.out.println("List size: " + list.size());
+            while (i < list.size()) {
+                if (list.get(i).getPreparador().equals(prep) && list.get(i).getAtleta().equals(atleta))
+                    jComboBox2.removeItem(list.get(i).getdiaSemana());
+                i++;
+            }
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
+    }
+    public synchronized void updateDays(String atleta) {
+        List<Rotina> list = null;
+        RotinaDAO rDAO = new RotinaDAO();
+        String prep = jComboBox3.getSelectedItem().toString();
+        List<String> allDays = Arrays.asList("Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado");
+        jComboBox2.removeAllItems();
+        int j = 0;
+        while (j < allDays.size()) {
+            jComboBox2.addItem(allDays.get(j));
+            j++;
+        }
+        
+        try {
+            list = rDAO.getRotinas();
+            int i = 0;
+            //System.out.println("List size: " + list.size());
+            while (i < list.size()) {
+                if (list.get(i).getAtleta().equals(atleta))
+                    jComboBox2.removeItem(list.get(i).getdiaSemana());
+                i++;
+            }
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
+    }
+    public synchronized void populatePreps() throws SQLException {
         List<Participante> list = null;
         PreparadorDAO pDAO = new PreparadorDAO();
 
@@ -373,7 +426,7 @@ public class CadastrarRotina extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    public void updateNamePrep() {
+    public synchronized void updateNamePrep() {
         List<Participante> list = null;
         PreparadorDAO pDAO = new PreparadorDAO();
 
@@ -386,12 +439,13 @@ public class CadastrarRotina extends javax.swing.JFrame {
                     jLabel2.setText(list.get(i).getNome());
                 i++;
             }
+            
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
         }
     }
-    public void updateNameAtleta(String preparador) {
+    public synchronized void updateNameAtleta(String preparador) {
         List<Participante> list = null;
         AtletaDAO dDAO = new AtletaDAO();
         
@@ -409,16 +463,15 @@ public class CadastrarRotina extends javax.swing.JFrame {
             ex.printStackTrace();
         }    
     }
-    public void populateAtletas(String preparador) {
+    public synchronized void populateAtletas(String preparador) {
         List<Participante> list = null;
         AtletaDAO dDAO = new AtletaDAO();
         
         try {
             list = dDAO.getAtletas(preparador);
             int i = 0;
-            //System.out.println("List size: " + list.size());
             while (i < list.size()) {
-                jComboBox1.addItem(list.get(i).getId());
+                    jComboBox1.addItem(list.get(i).getId());
                 i++;
             }
             jLabel3.setText(list.get(0).getNome());
