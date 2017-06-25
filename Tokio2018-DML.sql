@@ -115,11 +115,7 @@ INSERT INTO MODALIDADE(NroModalidade,Nome,Descricao)
     VALUES (2, 'Futebol Masculino', 'O torneio masculino é a única modalidade olímpica a "restringir" a participação de atletas. Isso porque a FIFA teme que o torneio olímpico de futebol possa competir em importância com a Copa do Mundo. Por outro lado, o Comitê Olímpico Internacional tem receio que as outras competições entrem em caráter secundário para a mídia, ofuscadas pelas grandes estrelas dos gramados.[carece de fontes] Por conta dessa "restrição", o torneio masculino é a competição de futebol mais imprevisível, com medalhas conquistadas por países como Japão (bronze em 1968), Gana (bronze em 1992), Nigéria (ouro em 1996, prata em 2008 e bronze em 2016), Camarões (ouro em 2000), Chile (bronze em 2000) e Coreia do Sul (bronze em 2012).');
 INSERT INTO MODALIDADE(NroModalidade,Nome,Descricao)
     VALUES (3, 'Futebol Feminino', 'A partir de 1996, o futebol feminino também é disputado, com dominância dos Estados Unidos da América, que esteve presente em todas as finais até 2012 e só não levou o ouro em 2000, perdendo para a Noruega. Na edição de 2016, pela primeira vez, as norte-americanas não disputaram medalhas. Elas foram superadas pela Suécia nas quartas de final, na disputa de penalidades. Com a seleção americana eliminada, e a Noruega fora do torneio, a Alemanha se sagrou a terceira campeã do torneio. Desde que o torneio feminino foi incluído no programa olímpico, nunca houve uma dobradinha - ou seja, o mesmo país conquistar a medalha de ouro tanto no masculino quanto no feminino. O país que chegou mais perto foi a Alemanha, que em 2016 conquistou o ouro no feminino e a prata no masculino.');
-
-INSERT INTO EQUIPE (NroEquipe, Nacao, Modalidade) VALUES (1, 1, 1);
-INSERT INTO EQUIPE (NroEquipe, Nacao, Modalidade) VALUES (2, 2, 2);
-INSERT INTO EQUIPE (NroEquipe, Nacao, Modalidade) VALUES (3, 3, 3);
-    
+ 
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (1, 'Marta Vieira da Silva', 'atleta');
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (2, 'Franklyn Galen', 'atleta');
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (3, 'Kirk Zackary', 'atleta');
@@ -130,17 +126,10 @@ INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (7, 'Eduardo Oliveira', 'pr
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (8, 'Jameson Joel', 'preparador');
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (9, 'Jerrard Truman', 'preparador');
 
-INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (1, 992561256);
-INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (1, 35615126);
-INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (2, 33351367);
+INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (4, 992561256);
+INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (4, 35615126);
+INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (8, 33351367);
 
-INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Equipe)
-    VALUES (1, 'regular', '38A1526T', 'feminino', 65.2, 1.60, TO_DATE('1989/07/09', 'yyyy/mm/dd'), 1);
-INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Equipe)
-    VALUES (2, 'recuperado', '72R2Z6A69', 'masculino', 83.2, 1.89, TO_DATE('1990/03/23', 'yyyy/mm/dd'), 2);
-INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Equipe)
-    VALUES (3, 'suspenso', '98H23K761', 'masculino', 74.6, 1.81, TO_DATE('1995/11/30', 'yyyy/mm/dd'), 3);
-    
 INSERT INTO MEDICO (NroMedico, CRM, Endereco)
     VALUES (4, 5523, 'Avenida Sávio Gama');
 INSERT INTO MEDICO (NroMedico, CRM, Endereco)
@@ -148,19 +137,26 @@ INSERT INTO MEDICO (NroMedico, CRM, Endereco)
 INSERT INTO MEDICO (NroMedico, CRM, Endereco)
     VALUES (6, 8382, 'Seymour Street');
 
-INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Data_Nasc, Sexo, TipoIdent, CPF, Equipe)
-    VALUES (7, 'eduardool@gmail.com', 'edu123', 'Sao Paulo', TO_DATE('1996/10/11', 'yyyy/mm/dd'), 'masculino', 'bra', '3737528442', 1);
-INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Data_Nasc, Sexo, TipoIdent, Passaporte, Equipe)
-    VALUES (8, 'jamesonjoel@gmail.com', 'jmson$31%j!', 'Pittsburgh', TO_DATE('1992/06/06', 'yyyy/mm/dd'), 'masculino', 'est', '6A8R8Y45', 2); 
-INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade,Data_Nasc, Sexo, TipoIdent, Passaporte, Equipe)
-    VALUES (9, 'jerrjarr@gmail.com', 'jjrr199509', 'Vancouver', TO_DATE('1995/09/25', 'yyyy/mm/dd'), 'masculino', 'est', '12AH65Y9', 3);
+INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Estado, Nacao, Data_Nasc, Sexo, TipoIdent, CPF)
+    VALUES (7, 'eduardool@gmail.com', 'edu123', 'Sao Paulo', 'Sao Paulo', 1, TO_DATE('1996/10/11', 'yyyy/mm/dd'), 'masculino', 'bra', '3737528442');
+INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Estado, Nacao, Data_Nasc, Sexo, TipoIdent, Passaporte)
+    VALUES (8, 'jamesonjoel@gmail.com', 'jmson$31%j!', 'Pittsburgh', 'Pensilvania', 2, TO_DATE('1992/06/06', 'yyyy/mm/dd'), 'masculino', 'est', '6A8R8Y45'); 
+INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Estado, Nacao, Data_Nasc, Sexo, TipoIdent, Passaporte)
+    VALUES (9, 'jerrjarr@gmail.com', 'jjrr199509', 'Vancouver', 'Columbia Britanica', 3, TO_DATE('1995/09/25', 'yyyy/mm/dd'), 'masculino', 'est', '12AH65Y9');
     
+INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
+    VALUES (1, 'regular', '38A1526T', 'feminino', 65.2, 1.60, TO_DATE('1989/07/09', 'yyyy/mm/dd'), 7, 1, 3);
+INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
+    VALUES (2, 'recuperado', '72R2Z6A69', 'masculino', 83.2, 1.89, TO_DATE('1990/03/23', 'yyyy/mm/dd'), 8, 2, 2);
+INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
+    VALUES (3, 'suspenso', '98H23K761', 'masculino', 74.6, 1.81, TO_DATE('1995/11/30', 'yyyy/mm/dd'), 9, 3, 1);
+
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
-    VALUES (1, 7, 'Segunda', 2, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 1);
-INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Descricao, Atleta)
-    VALUES (2, 8, 'Quarta', 'Extensão de tríceps com barra sentado, flexão de braços nas barras paralelas', 2);
+    VALUES (1, 7, 'Segunda', 20, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 1);
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
-    VALUES (3, 9, 'Quarta', 3, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 3);
+    VALUES (2, 8, 'Quarta', 30, 'Extensão de tríceps com barra sentado, flexão de braços nas barras paralelas', 2);
+INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
+    VALUES (3, 9, 'Quarta', 15, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 3);
 
 INSERT INTO PREPARO (NroPreparo, Rotina, Descricao)
     VALUES (1, 1, 'Treinar com séries de corrida e caminhada intercaladas permitindo uma maior percepção do esforço físico e um tempo para recuperar o fôlego.');
@@ -218,3 +214,5 @@ INSERT INTO METODO (NroMetodo, Diagnostico, Descricao, Efetividade)
     VALUES (2, 2, 'Pirimetamina (usado também contra a malária) associado a um antibiótico e ao ácido fólico', 'Impedem a multiplicação do protozoário nas formas mais agressivas da doença.');
 INSERT INTO METODO (NroMetodo, Diagnostico, Descricao, Efetividade)
     VALUES (3, 3, 'Uso de sumatriptana', 'Droga que reverte a dilatação dos vasos e diminui a transmissão da dor, e de naproxeno, que diminui a inflamação.');
+
+COMMIT;

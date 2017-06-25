@@ -9,7 +9,7 @@ import java.sql.*;
 
 /**
  *
- * @author lenovo
+ * @author Henrique
  */
 public class getConnection {
     private Connection conn;

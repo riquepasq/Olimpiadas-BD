@@ -11,12 +11,14 @@ import java.sql.SQLException;
 
 /**
  *
- * @author lenovo
+ * @author Henrique
  */
 public class Conexao {
     private Connection conn; 
     private String username = "e9778536";
     private String password = "9085583";
+    //private String username = "h8532252";
+    //private String password = "8532252";
     public Conexao(){
         String driver = "thin";
         String hostname = "grad.icmc.usp.br";
@@ -25,7 +27,7 @@ public class Conexao {
         String strcon = "jdbc:oracle:"+driver+":@"+hostname+":"+port+":"+sid;
         try{
             this.conn = DriverManager.getConnection(strcon, username, password);             
-            System.out.println("Conectado!");
+            System.out.println("Conectado!" + username);
         }catch(SQLException ex){
             System.out.println("Erro de Conexao");
             ex.printStackTrace();
