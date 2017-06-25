@@ -10,11 +10,11 @@ package database;
  * @author Henrique
  */
 public class Participante {
-    private int id;
+    private String id;
     private String nome;
     private String tipo;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public void setNome(String nome) {
@@ -24,7 +24,7 @@ public class Participante {
         this.tipo = tipo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
     public String getNome() {

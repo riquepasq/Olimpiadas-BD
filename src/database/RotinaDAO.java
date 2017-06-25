@@ -24,6 +24,48 @@ public class RotinaDAO {
     public RotinaDAO(){        
         conn = new Conexao().getConn();
     }
+    public List<Rotina> getRotinas() throws SQLException {
+        Statement st = null;
+        ResultSet rs = null;  
+        List<Rotina> rotinas = new ArrayList<>();
+        Rotina rotina;
+        String query = "SELECT * FROM ROTINA";
+   
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(query);
+            
+            while (rs.next()) {  
+                rotina = convertRowToObject(rs);
+                //System.out.println(number);
+                rotinas.add(rotina);
+            }
+            return rotinas;
+        }finally{
+            if(st != null)
+                st.close();
+            if(rs != null)
+                rs.close();
+        }
+        
+    }
+    private Rotina convertRowToObject(ResultSet rs)throws SQLException{
+        Rotina r = new Rotina();
+        String nrorotina = rs.getString("NROROTINA"); 
+        String preparador = rs.getString("PREPARADOR");    
+        String diaSemana = rs.getString("DIASEMANA");
+        int repeticao = rs.getInt("REPETICAO");
+        String descricao = rs.getString("DESCRICAO");
+        String atleta = rs.getString("ATLETA");
+        r.setId(nrorotina);
+        r.setPreparador(preparador);
+        r.setdiaSemana(diaSemana);
+        r.setRepeticao(repeticao);
+        r.setDescricao(descricao);
+        r.setAtleta(atleta);
+        
+        return r;
+    }
     public boolean inserirRotina(String preparador, String diaSemana, String repeticao, String descricao, String atleta) throws SQLException{
         Statement st = null;
         ResultSet rs = null;

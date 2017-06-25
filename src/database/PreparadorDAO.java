@@ -36,7 +36,6 @@ public class PreparadorDAO {
 
             while(rs.next()){
                 p = convertRowToObject(rs);
-                System.out.println(p.getNome());
                 list.add(p);  
             }
             return list;
@@ -49,7 +48,7 @@ public class PreparadorDAO {
     }
     private Participante convertRowToObject(ResultSet rs)throws SQLException{
         Participante p = new Participante();
-        int nropar = rs.getInt("NROPAR"); 
+        String nropar = rs.getString("NROPAR"); 
         String nome = rs.getString("NOME");    
         String tipo = rs.getString("TIPO");
         p.setId(nropar);

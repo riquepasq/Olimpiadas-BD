@@ -53,10 +53,10 @@ public class CadastrarRotina extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -91,7 +91,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
         jLabel9.setText("Descrição*");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
         jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,8 +108,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
         jLabel10.setText("Tempo de repetição (dias)*");
 
-        jLabel12.setText("Marta");
-
         jComboBox3.setToolTipText("");
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,11 +115,9 @@ public class CadastrarRotina extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setText("Eduardo Oliveira");
-
         jMenu1.setText("Gerenciamento");
 
-        jMenuItem1.setText("Cadastrar Metodo");
+        jMenuItem1.setText("Cadastrar Rotina");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -130,7 +125,7 @@ public class CadastrarRotina extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Alterar Metodo");
+        jMenuItem2.setText("Alterar Rotina");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -138,15 +133,16 @@ public class CadastrarRotina extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem6.setText("Deletar Metodo");
+        jMenuItem6.setText("Deletar Rotina");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem6);
+        jMenuItem6.getAccessibleContext().setAccessibleName("Deletar Rotina");
 
-        jMenuItem7.setText("Listar Metodos");
+        jMenuItem7.setText("Listar Rotinas");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -208,9 +204,9 @@ public class CadastrarRotina extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel12)))
+                                            .addComponent(jLabel3)))
                                     .addGap(0, 0, Short.MAX_VALUE))))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,9 +219,9 @@ public class CadastrarRotina extends javax.swing.JFrame {
                                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))))
                             .addGap(18, 18, 18)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel13)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2)
                             .addGap(0, 0, Short.MAX_VALUE))))
                 .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -250,12 +246,12 @@ public class CadastrarRotina extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -325,6 +321,7 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        updateNameAtleta(jComboBox3.getSelectedItem().toString());
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -353,25 +350,82 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
             // TODO add your handling code here:
-            populateAtletas();
+            updateNamePrep();
+            jComboBox1.removeAllItems();
+            populateAtletas(jComboBox3.getSelectedItem().toString());
     }//GEN-LAST:event_jComboBox3ActionPerformed
   
     public void populatePreps() throws SQLException {
         List<Participante> list = null;
-        Preparador p = new Preparador();
         PreparadorDAO pDAO = new PreparadorDAO();
-       
+
         try {
             list = pDAO.getAllPreparador();
-            System.out.println(list);
+            int i = 0;
+            //System.out.println("List size: " + list.size());
+            while (i < list.size()) {
+                jComboBox3.addItem(list.get(i).getId());
+                i++;
+            }
+            jLabel2.setText(list.get(0).getNome());
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
         }
     }
-    
-    public void populateAtletas() {
+    public void updateNamePrep() {
+        List<Participante> list = null;
+        PreparadorDAO pDAO = new PreparadorDAO();
+
+        try {   
+            list = pDAO.getAllPreparador();
+            int i = 0;
+            //System.out.println("Update: List size: " + list.size());
+            while (i < list.size()) {
+                if (jComboBox3.getSelectedItem().toString().equals(list.get(i).getId()))
+                    jLabel2.setText(list.get(i).getNome());
+                i++;
+            }
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
+    }
+    public void updateNameAtleta(String preparador) {
+        List<Participante> list = null;
+        AtletaDAO dDAO = new AtletaDAO();
         
+        try {
+            list = dDAO.getAtletas(preparador);
+            int i = 0;
+            //System.out.println("HERE: List size: " + list.size());
+            while (i < list.size()) {
+                if (jComboBox1.getSelectedItem().toString().equals(list.get(i).getId()))
+                    jLabel3.setText(list.get(i).getNome());
+                i++;
+            }
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }    
+    }
+    public void populateAtletas(String preparador) {
+        List<Participante> list = null;
+        AtletaDAO dDAO = new AtletaDAO();
+        
+        try {
+            list = dDAO.getAtletas(preparador);
+            int i = 0;
+            //System.out.println("List size: " + list.size());
+            while (i < list.size()) {
+                jComboBox1.addItem(list.get(i).getId());
+                i++;
+            }
+            jLabel3.setText(list.get(0).getNome());
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
     }
     /**
      * @param args the command line arguments
@@ -425,8 +479,8 @@ public class CadastrarRotina extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

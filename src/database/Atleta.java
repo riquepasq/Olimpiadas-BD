@@ -5,90 +5,81 @@
  */
 package database;
 
-import java.util.List;
-
 /**
  *
  * @author Henrique
  */
 public class Atleta {
     private int id;
-    private String nome;
-    private String email;
-    private String senha;
-    private String cidade;
-    private String estado;
-    private String data;
-    private String sexo;
-    private String tipoid;
-    private String CPF;
+    private String situacao;
     private String passaporte;
+    private String sexo;
+    private String peso;
+    private String altura;
+    private String data;
+    private String preparador;
+    private String nacao;
+    private String modalidade;
 
     public void setId(int id) {
         this.id = id;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassaporte(String passaporte) {
+        this.passaporte = passaporte;
     }
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }   
-    public void setCidade(String cidade){
-        this.cidade = cidade;
+    public void setPeso(String peso){
+        this.peso = peso;
     }  
-    public void setEstado(String estado){
-        this.estado = estado;
+    public void setAltura(String altura){
+        this.altura = altura;
     }
     public void setData(String data) {
         this.data = data;
     }
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setPreparador(String preparador) {
+        this.preparador = preparador;
     }
-    public void setTipoIdent(String tipoid) {
-        this.tipoid = tipoid;
+    public void setNacao(String nacao) {
+        this.nacao = nacao;
     }
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-    public void setPassaporte(String passaporte) {
-        this.passaporte = passaporte;
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
     }
     
     public int getId() {
         return id;
     }    
-    public String getNome() {
-        return nome;
+    public String getSituacao() {
+        return situacao;
     }
-    public String getEmail() {
-        return email;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public String getCidade() {
-        return cidade;
-    }
-    public String getEstado() {
-        return estado;
-    }
-    public String getData() {
-        return data;
+    public String getPassaporte() {
+        return passaporte;
     }
     public String getSexo() {
         return sexo;
     }
-    public String getTipoIdent() {
-        return tipoid;
+    public String getPeso() {
+        return peso;
     }
-    public String getCPF() {
-        return CPF;
+    public String getAltura() {
+        return altura;
     }
-    public String getPassaporte() {
-        return passaporte;
+    public String getData() {
+        return data;
+    }
+    public String getPreparador() {
+        return preparador;
+    }
+    public String getNacao() {
+        return nacao;
+    }
+    public String getModalidade() {
+        return modalidade;
     }
 }

@@ -12,17 +12,17 @@ import java.net.URL;
  * @author Henrique
  */
 public class Rotina {
-    private int id;
-    private int preparador;
+    private String id;
+    private String preparador;
     private String diaSemana;
     private int repeticao;
     private String descricao;
     private String atleta;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
-    public void setPreparador(int preparador) {
+    public void setPreparador(String preparador) {
         this.preparador = preparador;
     }
     public void setdiaSemana(String diaSemana){
@@ -37,10 +37,10 @@ public class Rotina {
     public void setAtleta(String atleta){
         this.atleta = atleta;
     }  
-    public int getId() {
+    public String getId() {
         return id;
     }    
-    public int getPreparador() {
+    public String getPreparador() {
         return preparador;
     }
     public String getdiaSemana() {

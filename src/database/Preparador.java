@@ -12,7 +12,7 @@ import java.util.List;
  * @author Henrique
  */
 public class Preparador {
-    private int id;
+    private String id;
     private String email;
     private String senha;
     private String cidade;
@@ -23,7 +23,7 @@ public class Preparador {
     private String CPF;
     private String passaporte;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public void setEmail(String email) {
@@ -54,7 +54,7 @@ public class Preparador {
         this.passaporte = passaporte;
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }    
     public String getEmail() {
