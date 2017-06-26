@@ -30,8 +30,9 @@ public class CadastrarRotina extends javax.swing.JFrame {
         populatePreps();
     }
     RotinaDAO rDAO = new RotinaDAO();
-    PreparadorDAO pDAO = new PreparadorDAO();
-    AtletaDAO aDAO = new AtletaDAO();
+    //PreparadorDAO pDAO = new PreparadorDAO();
+    //AtletaDAO aDAO = new AtletaDAO();
+    ParticipanteDAO pDAO = new ParticipanteDAO();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -284,7 +285,7 @@ public class CadastrarRotina extends javax.swing.JFrame {
         //System.out.println(jTextArea2.getText());
         List<Participante> alist = null;
         try{
-            alist = aDAO.getAtletas(jComboBox3.getSelectedItem().toString());
+            alist = pDAO.getAtletas(jComboBox3.getSelectedItem().toString());
             int i = 0;
             String atleta = null;
             while (i < alist.size()) {
@@ -316,7 +317,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new CadastrarRotina().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarRotina.class.getName()).log(Level.SEVERE, null, ex);
@@ -329,7 +329,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new AlterarRotina().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarRotina.class.getName()).log(Level.SEVERE, null, ex);
@@ -338,7 +337,14 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-
+        this.setVisible(false);
+        try {
+            rDAO.closeConn();
+            pDAO.closeConn();
+            new ListarAtletas().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -355,7 +361,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new DeletarRotina1().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
@@ -368,7 +373,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new ListarRotinas().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
@@ -419,7 +423,7 @@ public class CadastrarRotina extends javax.swing.JFrame {
     }
     public synchronized void populatePreps() throws SQLException {
         List<Participante> list = null;
-
+        
         try {
             list = pDAO.getAllPreparador();
             int i = 0;
@@ -453,30 +457,13 @@ public class CadastrarRotina extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    public synchronized void updateNameAtleta(String preparador) {
-        List<Participante> list = null;
-
-        try {
-            list = aDAO.getAtletas(preparador);
-            int i = 0;
-            //System.out.println("HERE: List size: " + list.size());
-            while (i < list.size()) {
-                //if (jComboBox1.getSelectedItem().toString().equals(list.get(i).getId()))
-                //    jLabel3.setText(list.get(i).getNome());
-                //i++;
-            }
-        }catch(Exception ex){
-            System.out.println("Erro");
-            ex.printStackTrace();
-        }    
-    }
     public synchronized void populateAtletas(String preparador) {
         List<Participante> list = null;
         StringBuilder atletas = new StringBuilder();
         jTextArea3.setEditable(false);
         jTextArea3.setText("");
         try {
-            list = aDAO.getAtletas(preparador);
+            list = pDAO.getAtletas(preparador);
             int i = 0;
             while (i < list.size()) {
                     atletas.append(list.get(i).getNome() + "\n");

@@ -33,8 +33,8 @@ public class ListarRotinas extends javax.swing.JFrame {
         addRowToTable();
     }
     RotinaDAO rDAO = new RotinaDAO();
-    PreparadorDAO pDAO = new PreparadorDAO();
-    AtletaDAO aDAO = new AtletaDAO();
+    ParticipanteDAO pDAO = new ParticipanteDAO();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,7 +192,6 @@ public class ListarRotinas extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new CadastrarRotina().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(ListarRotinas.class.getName()).log(Level.SEVERE, null, ex);
@@ -205,7 +204,6 @@ public class ListarRotinas extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new AlterarRotina().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(ListarRotinas.class.getName()).log(Level.SEVERE, null, ex);
@@ -214,6 +212,14 @@ public class ListarRotinas extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        try {
+            rDAO.closeConn();
+            pDAO.closeConn();
+            new ListarAtletas().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -230,7 +236,6 @@ public class ListarRotinas extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new DeletarRotina1().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,7 +248,6 @@ public class ListarRotinas extends javax.swing.JFrame {
         try {
             rDAO.closeConn();
             pDAO.closeConn();
-            aDAO.closeConn();
             new ListarRotinas().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
@@ -257,7 +261,7 @@ public class ListarRotinas extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object rowData[] = new Object[6];
         for (int i = 0; i < rlist.size(); i++) {
-            alist = aDAO.getAtletas(rlist.get(i).getPreparador());
+            alist = pDAO.getAtletas(rlist.get(i).getPreparador());
             rowData[0] = rlist.get(i).getId();
             for (int j = 0 ; j < plist.size() ; j++) {
                 if (rlist.get(i).getPreparador().equals(plist.get(j).getId())) 
