@@ -160,7 +160,11 @@ INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Na
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
     VALUES (1, 7, 'Segunda', 20, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 1);
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
+    VALUES (4, 7, 'Segunda', 20, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 10);    
+INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
     VALUES (2, 8, 'Quarta', 30, 'Extensão de tríceps com barra sentado, flexão de braços nas barras paralelas', 2);
+INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
+    VALUES (5, 8, 'Quarta', 30, 'Extensão de tríceps com barra sentado, flexão de braços nas barras paralelas', 11);
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
     VALUES (3, 9, 'Quarta', 15, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 3);
 

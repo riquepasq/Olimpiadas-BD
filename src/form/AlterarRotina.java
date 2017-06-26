@@ -9,9 +9,11 @@ import database.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +30,7 @@ public class AlterarRotina extends javax.swing.JFrame {
     public AlterarRotina() throws SQLException {
         initComponents();
         populatePreps();
-        populateRotinas();
+        //populateRotinas();
     }
     RotinaDAO rDAO = new RotinaDAO();
     PreparadorDAO pDAO = new PreparadorDAO();
@@ -50,7 +52,6 @@ public class AlterarRotina extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -60,9 +61,9 @@ public class AlterarRotina extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -89,20 +90,13 @@ public class AlterarRotina extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Preparador*");
+        jLabel6.setText("Selecione o Preparador:");
 
         jLabel7.setText("campo obrigatório*");
 
-        jLabel8.setText("Dia da semana*");
+        jLabel8.setText("Selecione o dia da Semana:");
 
         jLabel9.setText("Descrição*");
-
-        jComboBox1.setToolTipText("");
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jLabel11.setText("Atleta*");
 
@@ -119,14 +113,14 @@ public class AlterarRotina extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("Escolha a Rotina:");
+        jScrollPane3.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jComboBox4.setToolTipText("");
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
-            }
-        });
+        jTextArea3.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane3.setViewportView(jTextArea3);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jMenu1.setText("Gerenciamento");
 
@@ -199,100 +193,99 @@ public class AlterarRotina extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel3)))
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(49, 49, 49)
-                                    .addComponent(jLabel8))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel2))
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE))))
-                .addContainerGap(63, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel7))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(59, 59, 59)
+                                        .addComponent(jLabel9)
+                                        .addGap(20, 20, 20))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(49, 49, 49)
+                                                .addComponent(jLabel7))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel8)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jButton1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(63, 63, 63))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 50, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel7)
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addGap(106, 106, 106))
         );
 
         pack();
@@ -301,15 +294,23 @@ public class AlterarRotina extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //System.out.println(jTextArea2.getText());
+        List<Participante> alist = null;
         try{
-            if (rDAO.alterarRotina(jComboBox3.getModel().getSelectedItem().toString(), 
-                                          jComboBox2.getModel().getSelectedItem().toString(), 
-                                          jTextField2.getText(), 
-                                          jTextArea2.getText(),
-                                          jComboBox1.getModel().getSelectedItem().toString()))
-                jLabel5.setText("Alteracao efetuada com sucesso!");
-            else{
-                 jLabel5.setText("Falha a cadastrar");
+            alist = aDAO.getAtletas(jComboBox3.getSelectedItem().toString());
+            int i = 0;
+            String atleta = null;
+            while (i < alist.size()) {
+                atleta = alist.get(i).getId();
+                if (rDAO.alterarRotina(jComboBox3.getModel().getSelectedItem().toString(), 
+                                              jComboBox2.getModel().getSelectedItem().toString(), 
+                                              jTextField2.getText(), 
+                                              jTextArea2.getText(),
+                                              atleta))
+                    jLabel5.setText("Alteracao efetuada com sucesso!");
+                else{
+                     jLabel5.setText("Falha a cadastrar");
+                }
+                i++;
             }
             populateDays();
             jTextField2.setText("");
@@ -346,11 +347,6 @@ public class AlterarRotina extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-        updateNameAtleta(jComboBox3.getSelectedItem().toString());
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -383,7 +379,7 @@ public class AlterarRotina extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
         updateNamePrep();
-        jComboBox1.removeAllItems();
+        //jComboBox1.removeAllItems();
         populateAtletas(jComboBox3.getSelectedItem().toString());
         try {
             populateDays();
@@ -391,15 +387,6 @@ public class AlterarRotina extends javax.swing.JFrame {
             Logger.getLogger(AlterarRotina.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jComboBox3ActionPerformed
-
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        try {
-            // TODO add your handling code here:
-            selectRotina(jComboBox4.getSelectedItem().toString());
-        } catch (SQLException ex) {
-            Logger.getLogger(AlterarRotina.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jComboBox4ActionPerformed
     public synchronized void populateRotinas() throws SQLException {
         List<Rotina> list = null;
         try {
@@ -407,7 +394,7 @@ public class AlterarRotina extends javax.swing.JFrame {
             int i = 0;
             //System.out.println("List size: " + list.size());
             while (i < list.size()) {
-                jComboBox4.addItem(list.get(i).getId());
+                //jComboBox4.addItem(list.get(i).getId());
                 i++;
             }
         }catch(Exception ex){
@@ -415,17 +402,17 @@ public class AlterarRotina extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    public synchronized void selectRotina(String rotina) throws SQLException {
+    public synchronized void selectDia(String dia) throws SQLException {
         List<Rotina> list = null;
         try {
             list = rDAO.getRotinas();
             int i = 0;
             while (i < list.size()) {
-                if (list.get(i).getId().equals(rotina)) {
+                if (list.get(i).getdiaSemana().equals(dia)) {
                     //System.out.println(rotina + " " + list.get(i).getPreparador());
-                    jComboBox3.setSelectedItem(list.get(i).getPreparador());
-                    jComboBox1.setSelectedItem(list.get(i).getAtleta());
-                    jComboBox2.setSelectedItem(list.get(i).getdiaSemana());
+                    //jComboBox3.setSelectedItem(list.get(i).getPreparador());
+                    //jComboBox1.setSelectedItem(list.get(i).getAtleta());
+                    //jComboBox2.setSelectedItem(list.get(i).getdiaSemana());
                     jTextField2.setText(Integer.toString((list.get(i).getRepeticao())));
                     jTextArea2.setText(list.get(i).getDescricao());
                 }
@@ -440,35 +427,30 @@ public class AlterarRotina extends javax.swing.JFrame {
     public synchronized void populateDays() throws SQLException {
         List<Rotina> list = null;
         String prep = jComboBox3.getSelectedItem().toString();
-        String atleta = jComboBox1.getSelectedItem().toString();
+        //String atleta = jComboBox1.getSelectedItem().toString();
         List<String> allDays = Arrays.asList("Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado");
         jComboBox2.removeAllItems();
         int j = 0;
         while (j < allDays.size()) {
-            jComboBox2.addItem(allDays.get(j));
+            //jComboBox2.addItem(allDays.get(j));
             j++;
         }
         
         try {
             list = rDAO.getRotinas();
             int i = 0;
+            Set<String> days = new HashSet<>();
             //System.out.println("List size: " + list.size());
             while (i < list.size()) {
-                if (list.get(i).getPreparador().equals(prep))
-                    jComboBox2.removeItem(list.get(i).getdiaSemana());
-                i++;
-            }
-            //add current day back
-            String rotina = jComboBox4.getSelectedItem().toString();
-            i = 0;
-            while (i < list.size()) {
-                if (list.get(i).getId().equals(rotina)) {
-                    jComboBox2.addItem(list.get(i).getdiaSemana());
-                    jComboBox2.setSelectedItem(list.get(i).getdiaSemana());
+                if (list.get(i).getPreparador().equals(prep)) {
+                    //jComboBox2.addItem(list.get(i).getdiaSemana());
+                    days.add(list.get(i).getdiaSemana());
                 }
                 i++;
             }
-            
+            for (String str: days) {
+                jComboBox2.addItem(str);
+            }      
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
@@ -516,9 +498,9 @@ public class AlterarRotina extends javax.swing.JFrame {
             int i = 0;
             //System.out.println("HERE: List size: " + list.size());
             while (i < list.size()) {
-                if (jComboBox1.getSelectedItem().toString().equals(list.get(i).getId()))
-                    jLabel3.setText(list.get(i).getNome());
-                i++;
+                //if (jComboBox1.getSelectedItem().toString().equals(list.get(i).getId()))
+                //    jLabel3.setText(list.get(i).getNome());
+                //i++;
             }
         }catch(Exception ex){
             System.out.println("Erro");
@@ -527,15 +509,18 @@ public class AlterarRotina extends javax.swing.JFrame {
     }
     public synchronized void populateAtletas(String preparador) {
         List<Participante> list = null;
-        
+        StringBuilder atletas = new StringBuilder();
+        jTextArea3.setEditable(false);
+        jTextArea3.setText("");
         try {
             list = aDAO.getAtletas(preparador);
             int i = 0;
             while (i < list.size()) {
-                    jComboBox1.addItem(list.get(i).getId());
+                    atletas.append(list.get(i).getNome() + "\n");
+                    //jComboBox1.addItem(list.get(i).getId());
                 i++;
             }
-            jLabel3.setText(list.get(0).getNome());
+            jTextArea3.append(atletas.toString());
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
@@ -594,13 +579,10 @@ public class AlterarRotina extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -618,8 +600,10 @@ public class AlterarRotina extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
