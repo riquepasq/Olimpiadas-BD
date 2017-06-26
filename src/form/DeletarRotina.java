@@ -19,15 +19,15 @@ import java.util.logging.Logger;
  *
  * @author Henrique
  */
-public class CadastrarRotina extends javax.swing.JFrame {
+public class DeletarRotina extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastrarPreparador
      */
     
-    public CadastrarRotina() throws SQLException {
+    public DeletarRotina() throws SQLException {
         initComponents();
-        populatePreps();
+        populateRotinas();
     }
     RotinaDAO rDAO = new RotinaDAO();
     PreparadorDAO pDAO = new PreparadorDAO();
@@ -49,17 +49,16 @@ public class CadastrarRotina extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -76,10 +75,10 @@ public class CadastrarRotina extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastrar Rotina");
-        setName("Cadastrar Rotina"); // NOI18N
+        setTitle("Deletar Rotina");
+        setName("Deletar Rotina"); // NOI18N
 
-        jButton1.setText("Cadastrar");
+        jButton1.setText("Deletar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -94,25 +93,16 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
         jLabel9.setText("Descrição*");
 
-        jComboBox1.setToolTipText("");
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel11.setText("Atleta*");
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
 
         jLabel10.setText("Tempo de repetição (dias)*");
 
-        jComboBox3.setToolTipText("");
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel12.setText("Escolha a Rotina:");
+
+        jComboBox4.setToolTipText("");
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                jComboBox4ActionPerformed(evt);
             }
         });
 
@@ -187,45 +177,38 @@ public class CadastrarRotina extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel3)))
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(49, 49, 49)
-                                    .addComponent(jLabel8))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))))
-                            .addGap(18, 18, 18)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel2)
-                            .addGap(0, 0, Short.MAX_VALUE))))
-                .addContainerGap(63, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel14))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel8))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jLabel7))
@@ -237,34 +220,36 @@ public class CadastrarRotina extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel13))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel14))
+                .addGap(106, 106, 106)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -280,21 +265,13 @@ public class CadastrarRotina extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //RotinaDAO rotDAO = new RotinaDAO();
-        //System.out.println(jTextArea2.getText());
         try{
-            if (rDAO.inserirRotina(jComboBox3.getModel().getSelectedItem().toString(), 
-                                          jComboBox2.getModel().getSelectedItem().toString(), 
-                                          jTextField2.getText(), 
-                                          jTextArea2.getText(),
-                                          jComboBox1.getModel().getSelectedItem().toString()))
-                jLabel5.setText("Cadastro efetuado com sucesso!");
+            if (rDAO.deletarRotina(jComboBox4.getModel().getSelectedItem().toString())) 
+                jLabel5.setText("Delecao efetuada com sucesso!");
             else{
                  jLabel5.setText("Falha a cadastrar");
             }
-            populateDays();
-            jTextField2.setText("");
-            jTextArea2.setText("");
+            jComboBox4.removeItem(jComboBox4.getSelectedItem());
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
@@ -310,7 +287,7 @@ public class CadastrarRotina extends javax.swing.JFrame {
             aDAO.closeConn();
             new CadastrarRotina().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastrarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -323,18 +300,12 @@ public class CadastrarRotina extends javax.swing.JFrame {
             aDAO.closeConn();
             new AlterarRotina().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastrarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-        updateNameAtleta(jComboBox3.getSelectedItem().toString());
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -362,108 +333,78 @@ public class CadastrarRotina extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-        updateNamePrep();
-        jComboBox1.removeAllItems();
-        populateAtletas(jComboBox3.getSelectedItem().toString());
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         try {
-            populateDays();
+            // TODO add your handling code here:
+            selectRotina(jComboBox4.getSelectedItem().toString());
         } catch (SQLException ex) {
-            Logger.getLogger(CadastrarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-    public synchronized void populateDays() throws SQLException {
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    public synchronized void populateRotinas() throws SQLException {
         List<Rotina> list = null;
-        //RotinaDAO rDAO = new RotinaDAO();
-        String prep = jComboBox3.getSelectedItem().toString();
-        String atleta = jComboBox1.getSelectedItem().toString();
-        List<String> allDays = Arrays.asList("Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado");
-        jComboBox2.removeAllItems();
-        int j = 0;
-        while (j < allDays.size()) {
-            jComboBox2.addItem(allDays.get(j));
-            j++;
-        }
-        
         try {
+            list = rDAO.getRotinas();          
+            int i = 0;
+            //System.out.println("List size: " + list.size());
+            while (i < list.size()) {
+                jComboBox4.addItem(list.get(i).getId());
+                i++;
+            }
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
+    }
+    public synchronized void selectRotina(String rotina) throws SQLException {
+        List<Rotina> list = null;
+        List<Participante> plist = null;
+        List<Participante> alist = null;  
+        try {
+            int i = 0;
+            int j = 0;
+            String prepname = null;
+            String atletname = null;
             list = rDAO.getRotinas();
-            int i = 0;
-            //System.out.println("List size: " + list.size());
+            plist = pDAO.getAllPreparador();
             while (i < list.size()) {
-                if (list.get(i).getPreparador().equals(prep))
-                    jComboBox2.removeItem(list.get(i).getdiaSemana());
-                i++;
-            }
-        }catch(Exception ex){
-            System.out.println("Erro");
-            ex.printStackTrace();
-        }
-    }
-    public synchronized void populatePreps() throws SQLException {
-        List<Participante> list = null;
-
-        try {
-            list = pDAO.getAllPreparador();
-            int i = 0;
-            //System.out.println("List size: " + list.size());
-            while (i < list.size()) {
-                jComboBox3.addItem(list.get(i).getId());
-                i++;
-            }
-            jLabel2.setText(list.get(0).getNome());
-        }catch(Exception ex){
-            System.out.println("Erro");
-            ex.printStackTrace();
-        }
-    }
-    public synchronized void updateNamePrep() {
-        List<Participante> list = null;
-        //PreparadorDAO pDAO = new PreparadorDAO();
-
-        try {   
-            list = pDAO.getAllPreparador();
-            int i = 0;
-            //System.out.println("Update: List size: " + list.size());
-            while (i < list.size()) {
-                if (jComboBox3.getSelectedItem().toString().equals(list.get(i).getId()))
-                    jLabel2.setText(list.get(i).getNome());
+                alist = aDAO.getAtletas(list.get(i).getPreparador());
+                //System.out.println(plist.get(i).getId() + " " + plist.get(i).getNome());
+                if (list.get(i).getId().equals(rotina)) {
+                    j = 0;
+                    while (j < plist.size()) {
+                        if (plist.get(j).getId().equals(list.get(i).getPreparador())) {
+                            //System.out.println(plist.get(j).getNome());
+                            prepname = plist.get(j).getNome();
+                        }
+                        j++;
+                    }
+                    j = 0;
+                    while (j < alist.size()) {
+                        //System.out.println(alist.get(j).getNome());
+                        if (alist.get(j).getId().equals(list.get(i).getAtleta())) {
+                            atletname = alist.get(j).getNome();
+                        }
+                        j++;
+                    }
+                }
                 i++;
             }
             
-        }catch(Exception ex){
-            System.out.println("Erro");
-            ex.printStackTrace();
-        }
-    }
-    public synchronized void updateNameAtleta(String preparador) {
-        List<Participante> list = null;
-        
-        try {
-            list = aDAO.getAtletas(preparador);
-            int i = 0;
-            //System.out.println("HERE: List size: " + list.size());
+            i = 0;
             while (i < list.size()) {
-                if (jComboBox1.getSelectedItem().toString().equals(list.get(i).getId()))
-                    jLabel3.setText(list.get(i).getNome());
+                if (list.get(i).getId().equals(rotina)) {
+                    //System.out.println(rotina + " " + list.get(i).getPreparador());
+                    jLabel2.setText(prepname);
+                    jLabel3.setText(atletname);
+                    jLabel4.setText(list.get(i).getdiaSemana());
+                    jLabel13.setText(Integer.toString((list.get(i).getRepeticao())));
+                    jLabel14.setText(list.get(i).getDescricao());
+                }
                 i++;
             }
-        }catch(Exception ex){
-            System.out.println("Erro");
-            ex.printStackTrace();
-        }    
-    }
-    public synchronized void populateAtletas(String preparador) {
-        List<Participante> list = null;
-
-        try {
-            list = aDAO.getAtletas(preparador);
-            int i = 0;
-            while (i < list.size()) {
-                    jComboBox1.addItem(list.get(i).getId());
-                i++;
-            }
-            jLabel3.setText(list.get(0).getNome());
+            //System.out.println("List size: " + list.size());
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
@@ -486,14 +427,26 @@ public class CadastrarRotina extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeletarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeletarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeletarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeletarRotina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -504,9 +457,9 @@ public class CadastrarRotina extends javax.swing.JFrame {
             public void run() {
                 
                 try {
-                    new CadastrarRotina().setVisible(true);
+                    new DeletarRotina().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(CadastrarRotina.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -515,14 +468,16 @@ public class CadastrarRotina extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -539,9 +494,6 @@ public class CadastrarRotina extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

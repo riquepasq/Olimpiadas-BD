@@ -56,4 +56,7 @@ public class AtletaDAO {
         p.setTipo(tipo);
         return p;
     }
+    public void closeConn() throws SQLException {
+        conn.close();
+    }
 }

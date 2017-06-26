@@ -160,4 +160,7 @@ public class PreparadorDAO {
                 rs.close();
         }
     }
+    public void closeConn() throws SQLException {
+        conn.close();
+    }
 }

@@ -125,6 +125,8 @@ INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (6, 'Erskine Brenton', 'med
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (7, 'Eduardo Oliveira', 'preparador');
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (8, 'Jameson Joel', 'preparador');
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (9, 'Jerrard Truman', 'preparador');
+INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (10, 'Joana da Silva', 'atleta');
+INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (11, 'Jorge Hayford', 'atleta');
 
 INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (4, 992561256);
 INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (4, 35615126);
@@ -150,6 +152,10 @@ INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Na
     VALUES (2, 'recuperado', '72R2Z6A69', 'masculino', 83.2, 1.89, TO_DATE('1990/03/23', 'yyyy/mm/dd'), 8, 2, 2);
 INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
     VALUES (3, 'suspenso', '98H23K761', 'masculino', 74.6, 1.81, TO_DATE('1995/11/30', 'yyyy/mm/dd'), 9, 3, 1);
+INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
+    VALUES (10, 'suspenso', '88N23Q762', 'feminino', 65.0, 1.70, TO_DATE('1992/01/22', 'yyyy/mm/dd'), 7, 1, 3);
+INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
+    VALUES (11, 'regular', '18N23Q752', 'masculino', 75.0, 1.80, TO_DATE('1993/02/12', 'yyyy/mm/dd'), 8, 2, 2);
 
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
     VALUES (1, 7, 'Segunda', 20, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 1);

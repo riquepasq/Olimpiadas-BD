@@ -93,27 +93,53 @@ public class RotinaDAO {
    public boolean alterarRotina(String preparador, String diaSemana, String repeticao, String descricao, String atleta) throws SQLException{
         Statement st = null;
         ResultSet rs = null;
-        int ID = getLastId();
         int rep = Integer.parseInt(repeticao);
         int nroprep = Integer.parseInt(preparador);
         int nroatleta = Integer.parseInt(atleta);
         try {
             st = conn.createStatement();
             
-            st.executeUpdate("INSERT INTO ROTINA(NroRotina, diaSemana, Repeticao, Descricao, Atleta) VALUES("
-                    + (ID+1) + ","
-                    + nroprep + ",'"
-                    + diaSemana + "',"
-                    + rep + ",'"
-                    + descricao + "',"
-                    + nroatleta + ")");
+            st.executeUpdate("UPDATE ROTINA SET PREPARADOR = " + nroprep + 
+                    ", DIASEMANA = '" + diaSemana +
+                    "', REPETICAO = " + rep +
+                    ", DESCRICAO = '" + descricao +
+                    "', ATLETA = " + nroatleta);
             return true;
         }finally{
             if(st != null)
                 st.close();
         }
     }
-    
+   public boolean deletarRotina(String rotina) throws SQLException{
+       
+       Statement st = null;
+        ResultSet rs = null;
+        int rot = Integer.parseInt(rotina);
+        try {
+            st = conn.createStatement();
+            
+            st.executeUpdate("DELETE FROM ROTINA WHERE NROROTINA = " + rot);
+            return true;
+        }finally{
+            if(st != null)
+                st.close();
+        }
+    }
+   public void commitTransaction() throws SQLException {
+       Statement st = null;
+       ResultSet rs = null;
+       String query = "COMMIT";
+       try {
+            st = conn.createStatement();
+            rs = st.executeQuery(query);         
+        }finally{
+            if(st != null)
+                st.close();
+            if(rs != null)
+                rs.close();
+        }
+   } 
+   
     public int getLastId() throws SQLException {
         Statement st = null;
         ResultSet rs = null;
@@ -134,5 +160,8 @@ public class RotinaDAO {
             if(rs != null)
                 rs.close();
         }
+    }
+    public void closeConn() throws SQLException {
+        conn.close();
     }
 }
