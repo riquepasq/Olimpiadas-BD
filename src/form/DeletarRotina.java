@@ -265,17 +265,17 @@ public class DeletarRotina extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try{
-            if (rDAO.deletarRotina(jComboBox4.getModel().getSelectedItem().toString())) 
-                jLabel5.setText("Delecao efetuada com sucesso!");
-            else{
-                 jLabel5.setText("Falha a cadastrar");
-            }
-            jComboBox4.removeItem(jComboBox4.getSelectedItem());
-        }catch(Exception ex){
-            System.out.println("Erro");
-            ex.printStackTrace();
-        }
+        //try{
+            //if (rDAO.deletarRotina(jComboBox4.getModel().getSelectedItem().toString())) 
+            //    jLabel5.setText("Delecao efetuada com sucesso!");
+            //else{
+            //     jLabel5.setText("Falha a cadastrar");
+            //}
+            //jComboBox4.removeItem(jComboBox4.getSelectedItem());
+        //}catch(Exception ex){
+        //    System.out.println("Erro");
+        //    ex.printStackTrace();
+        //}
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -323,7 +323,7 @@ public class DeletarRotina extends javax.swing.JFrame {
             rDAO.closeConn();
             pDAO.closeConn();
             aDAO.closeConn();
-            new DeletarRotina().setVisible(true);
+            new DeletarRotina1().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
         }

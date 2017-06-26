@@ -24,6 +24,31 @@ public class RotinaDAO {
     public RotinaDAO(){        
         conn = new Conexao().getConn();
     }
+    public List<Rotina> listRotinas() throws SQLException {
+        Statement st = null;
+        ResultSet rs = null;  
+        List<Rotina> rotinas = new ArrayList<>();
+        Rotina rotina;
+        String query = "SELECT * FROM ROTINA WHERE ROWNUM <= 15";
+   
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(query);
+            
+            while (rs.next()) {  
+                rotina = convertRowToObject(rs);
+                //System.out.println(number);
+                rotinas.add(rotina);
+            }
+            return rotinas;
+        }finally{
+            if(st != null)
+                st.close();
+            if(rs != null)
+                rs.close();
+        }
+    }
+
     public List<Rotina> getRotinas() throws SQLException {
         Statement st = null;
         ResultSet rs = null;  
@@ -99,26 +124,26 @@ public class RotinaDAO {
         try {
             st = conn.createStatement();
             
-            st.executeUpdate("UPDATE ROTINA SET PREPARADOR = " + nroprep + 
-                    ", DIASEMANA = '" + diaSemana +
-                    "', REPETICAO = " + rep +
+            st.executeUpdate("UPDATE ROTINA SET REPETICAO = " + rep +
                     ", DESCRICAO = '" + descricao +
-                    "', ATLETA = " + nroatleta);
+                    "' WHERE PREPARADOR = " + nroprep +
+                    " AND DIASEMANA = '" + diaSemana +
+                    "' AND ATLETA = " + nroatleta);
             return true;
         }finally{
             if(st != null)
                 st.close();
         }
     }
-   public boolean deletarRotina(String rotina) throws SQLException{
+   public boolean deletarRotina(String prep, String dia) throws SQLException{
        
        Statement st = null;
         ResultSet rs = null;
-        int rot = Integer.parseInt(rotina);
+        //int rot = Integer.parseInt(rotina);
         try {
             st = conn.createStatement();
             
-            st.executeUpdate("DELETE FROM ROTINA WHERE NROROTINA = " + rot);
+            st.executeUpdate("DELETE FROM ROTINA WHERE PREPARADOR = " + prep + " AND DIASEMANA = '" + dia + "'");
             return true;
         }finally{
             if(st != null)
