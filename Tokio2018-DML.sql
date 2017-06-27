@@ -203,7 +203,7 @@ INSERT INTO ATENDIMENTO_DOPING(NroDoping, Atleta, Medico, Data, Resultados)
 INSERT INTO ATENDIMENTO_DOPING(NroDoping, Atleta, Medico, Data, Resultados)
     VALUES (2, 2, 5, TO_DATE('2017/06/14', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
 INSERT INTO ATENDIMENTO_DOPING(NroDoping, Atleta, Medico, Data, Resultados)
-    VALUES (3, 3, 6, TO_DATE('2017/05/11', 'yyyy/mm/dd'), 'Nenhuma irregularidade encontrada');
+    VALUES (3, 3, 6, TO_DATE('2017/05/11', 'yyyy/mm/dd'), 'Substancia ilegal encontrada!');
 
 INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
     VALUES (1, 1, 4, TO_DATE('2017/05/12', 'yyyy/mm/dd'));

@@ -5,10 +5,15 @@
  */
 package form;
 
+import com.itextpdf.text.DocumentException;
 import database.*;
+import java.awt.Color;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
@@ -16,7 +21,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import pdf.PDFgenerator;
 
 /**
  *
@@ -27,10 +34,13 @@ public class ListarAtletas extends javax.swing.JFrame {
     /**
      * Creates new form CadastrarPreparador
      */
+    private PDFgenerator pdf;
+    private static final String reportPath = ".\\atletas.pdf";
     
     public ListarAtletas() throws SQLException {
         initComponents();
         populateModalidades();
+        pdf = new PDFgenerator();
     }
     RotinaDAO rDAO = new RotinaDAO();
     ParticipanteDAO pDAO = new ParticipanteDAO();
@@ -60,6 +70,7 @@ public class ListarAtletas extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -144,6 +155,13 @@ public class ListarAtletas extends javax.swing.JFrame {
         });
 
         jLabel3.setText("jLabel3");
+
+        jButton1.setText("Gerar PDF");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Gerenciamento");
 
@@ -243,6 +261,10 @@ public class ListarAtletas extends javax.swing.JFrame {
                                 .addComponent(jLabel3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,8 +285,10 @@ public class ListarAtletas extends javax.swing.JFrame {
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -392,6 +416,55 @@ public class ListarAtletas extends javax.swing.JFrame {
             Logger.getLogger(ListarAtletas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            pdf.newFile(reportPath);
+            
+            /* get system date */
+            String schedule = new SimpleDateFormat("HH:mm:ss")
+                    .format(Calendar.getInstance().getTime());
+            String date = new SimpleDateFormat("dd/MM/yyyy")
+                    .format(Calendar.getInstance().getTime());
+            
+            //pdf.insertParagraph(labelReportAtleta.getText() + ".");
+            
+            pdf.insertParagraph("Generated at " + schedule + " - " + date + ".");
+            pdf.insertParagraph(" ");
+            
+            insertTable(jTable1);
+            
+            pdf.closeFile();
+            
+            pdf.readFile(reportPath);
+            
+        } catch(DocumentException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void insertTable(JTable table) throws DocumentException {
+        String[] header = new String[table.getColumnCount()];
+        
+        for(int i = 0; i < table.getColumnCount(); i++) {
+            header[i] = table.getColumnName(i);
+        }
+        
+        pdf.newHeaderTable(header);
+        
+        String[] field;
+        
+        for(int i = 0; i < table.getRowCount(); i++) {
+            field = new String[table.getColumnCount()];
+            
+            for(int j = 0; j < table.getColumnCount(); j++) {
+                field[j] = table.getValueAt(i,j).toString();
+            }
+            
+            pdf.newLineTable(field);
+        }
+        
+        pdf.finishTable();
+    }
     
     public void addRowToTable() throws SQLException {
         List<Atleta> alist = null;
@@ -694,6 +767,7 @@ public class ListarAtletas extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
