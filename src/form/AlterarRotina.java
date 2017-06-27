@@ -352,7 +352,7 @@ public class AlterarRotina extends javax.swing.JFrame {
             pDAO.closeConn();
             new ListarAtletas().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -372,7 +372,7 @@ public class AlterarRotina extends javax.swing.JFrame {
             pDAO.closeConn();
             new DeletarRotina1().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -384,7 +384,7 @@ public class AlterarRotina extends javax.swing.JFrame {
             pDAO.closeConn();
             new ListarRotinas().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 

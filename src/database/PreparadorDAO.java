@@ -24,12 +24,12 @@ public class PreparadorDAO {
     public PreparadorDAO(){        
         conn = new Conexao().getConn();
     }
-    public List<Participante> getAllPreparador() throws SQLException{
-        List<Participante> list = new ArrayList<>();
+    public List<Preparador> getPreparadores() throws SQLException{
+        List<Preparador> list = new ArrayList<>();
         Statement st = null;
         ResultSet rs = null;   
-        String query = "SELECT * FROM PARTICIPANTE WHERE TIPO = 'preparador'";
-        Participante p;   
+        String query = "SELECT * FROM PREPARADOR";
+        Preparador p;   
         try{
             st = conn.createStatement();
             rs = st.executeQuery(query);
@@ -46,17 +46,32 @@ public class PreparadorDAO {
                 rs.close();
         }
     }
-    private Participante convertRowToObject(ResultSet rs)throws SQLException{
-        Participante p = new Participante();
-        String nropar = rs.getString("NROPAR"); 
-        String nome = rs.getString("NOME");    
-        String tipo = rs.getString("TIPO");
-        p.setId(nropar);
-        p.setNome(nome);
-        p.setTipo(tipo);
+    private Preparador convertRowToObject(ResultSet rs)throws SQLException{
+        Preparador p = new Preparador();
+        String nropre = rs.getString("NROPREPARADOR"); 
+        String email = rs.getString("EMAIL");    
+        String senha = rs.getString("SENHA");
+        String cidade = rs.getString("CIDADE");
+        String estado = rs.getString("ESTADO");
+        String nacao = rs.getString("NACAO");
+        String data = rs.getString("DATA_NASC");
+        String sexo = rs.getString("SEXO");
+        String tipoident = rs.getString("TIPOIDENT");
+        String CPF = rs.getString("CPF");
+        String passaporte = rs.getString("PASSAPORTE");
+        p.setId(nropre);
+        p.setEmail(email);
+        p.setSenha(senha);
+        p.setCidade(cidade);
+        p.setEstado(estado);
+        p.setNacao(nacao);
+        p.setData(data);
+        p.setSexo(sexo);
+        p.setTipoIdent(tipoident);
+        p.setCPF(CPF);
+        p.setPassaporte(passaporte);
         return p;
     }
-    
     public boolean inserirPreparador(String nome, String email, String senha, String cidade, String estado, String data, String sexo, String tipoid, String identidade) throws SQLException{
         Statement st = null;
         ResultSet rs = null;

@@ -5,7 +5,6 @@
  */
 package database;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,23 +12,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
- * @author lenovo
+ * @author Henrique
  */
-public class NacaoDAO {
+public class MedicoDAO {
     
 
     private Connection conn;
-    public NacaoDAO(){        
+    public MedicoDAO(){        
         conn = new Conexao().getConn();
     }
-public List<Nacao> getNacao() throws SQLException{
-        List<Nacao> list = new ArrayList<>();
+    public List<Medico> getMedicos() throws SQLException{
+        List<Medico> list = new ArrayList<>();
         Statement st = null;
         ResultSet rs = null;   
-        String query = "SELECT * FROM NACAO";
-        Nacao p;   
+        String query = "SELECT * FROM MEDICO";
+        Medico p;   
         try{
             st = conn.createStatement();
             rs = st.executeQuery(query);
@@ -46,22 +46,14 @@ public List<Nacao> getNacao() throws SQLException{
                 rs.close();
         }
     } 
-    private Nacao convertRowToObject(ResultSet rs)throws SQLException{
-        Nacao p = new Nacao();
-        String nronacao = rs.getString("NRONACAO"); 
-        String nome = rs.getString("NOME");
-        String continente = rs.getString("CONTINENTE");
-        int numatletas = rs.getInt("NUMATLETAS");
-        String esporte = rs.getString("ESPORTE");
-        URL bandeira = rs.getURL("BANDEIRA");
-        String hino = rs.getString("HINO");
-        p.setId(nronacao);
-        p.setNome(nome);
-        p.setContinente(continente);
-        p.setNumAtletas(numatletas);
-        p.setEsporte(esporte);
-        p.setBandeira(bandeira);
-        p.setHino(hino);
+    private Medico convertRowToObject(ResultSet rs)throws SQLException{
+        Medico p = new Medico();
+        String nromed = rs.getString("NROMEDICO"); 
+        String CRM = rs.getString("CRM");
+        String endereco = rs.getString("ENDERECO");
+        p.setId(nromed);
+        p.setCRM(CRM);
+        p.setEndereco(endereco);
 
         return p;
     }

@@ -218,7 +218,7 @@ public class ListarRotinas extends javax.swing.JFrame {
             pDAO.closeConn();
             new ListarAtletas().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -238,7 +238,7 @@ public class ListarRotinas extends javax.swing.JFrame {
             pDAO.closeConn();
             new DeletarRotina1().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -250,7 +250,7 @@ public class ListarRotinas extends javax.swing.JFrame {
             pDAO.closeConn();
             new ListarRotinas().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
     
@@ -259,6 +259,7 @@ public class ListarRotinas extends javax.swing.JFrame {
         List<Rotina> rlist = rDAO.listRotinas();
         List<Participante> alist = null;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
         Object rowData[] = new Object[6];
         for (int i = 0; i < rlist.size(); i++) {
             alist = pDAO.getAtletas(rlist.get(i).getPreparador());

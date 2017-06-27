@@ -17,6 +17,7 @@ public class Preparador {
     private String senha;
     private String cidade;
     private String estado;
+    private String nacao;
     private String data;
     private String sexo;
     private String tipoid;
@@ -37,6 +38,9 @@ public class Preparador {
     }  
     public void setEstado(String estado){
         this.estado = estado;
+    }
+    public void setNacao(String nacao){
+        this.nacao = nacao;
     }
     public void setData(String data) {
         this.data = data;
@@ -69,6 +73,9 @@ public class Preparador {
     public String getEstado() {
         return estado;
     }
+    public String getNacao() {
+        return nacao;
+    }  
     public String getData() {
         return data;
     }

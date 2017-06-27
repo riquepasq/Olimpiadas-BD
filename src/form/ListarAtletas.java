@@ -35,6 +35,9 @@ public class ListarAtletas extends javax.swing.JFrame {
     RotinaDAO rDAO = new RotinaDAO();
     ParticipanteDAO pDAO = new ParticipanteDAO();
     ModalidadeDAO mDAO = new ModalidadeDAO();
+    AtletaDAO aDAO = new AtletaDAO();
+    ConsultaDAO cDAO = new ConsultaDAO();
+    NacaoDAO nDAO = new NacaoDAO();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -259,8 +262,8 @@ public class ListarAtletas extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -274,6 +277,9 @@ public class ListarAtletas extends javax.swing.JFrame {
             rDAO.closeConn();
             pDAO.closeConn();
             mDAO.closeConn();
+            aDAO.closeConn();
+            cDAO.closeConn();
+            nDAO.closeConn();
             new CadastrarRotina().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(ListarAtletas.class.getName()).log(Level.SEVERE, null, ex);
@@ -287,6 +293,9 @@ public class ListarAtletas extends javax.swing.JFrame {
             rDAO.closeConn();
             pDAO.closeConn();
             mDAO.closeConn();
+            aDAO.closeConn();
+            cDAO.closeConn();
+            nDAO.closeConn();
             new AlterarRotina().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(ListarAtletas.class.getName()).log(Level.SEVERE, null, ex);
@@ -300,9 +309,12 @@ public class ListarAtletas extends javax.swing.JFrame {
             rDAO.closeConn();
             pDAO.closeConn();
             mDAO.closeConn();
+            aDAO.closeConn();
+            cDAO.closeConn();
+            nDAO.closeConn();
             new ListarAtletas().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -321,9 +333,12 @@ public class ListarAtletas extends javax.swing.JFrame {
             rDAO.closeConn();
             pDAO.closeConn();
             mDAO.closeConn();
+            aDAO.closeConn();
+            cDAO.closeConn();
+            nDAO.closeConn();
             new DeletarRotina1().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -334,30 +349,119 @@ public class ListarAtletas extends javax.swing.JFrame {
             rDAO.closeConn();
             pDAO.closeConn();
             mDAO.closeConn();
+            aDAO.closeConn();
+            cDAO.closeConn();
+            nDAO.closeConn();
             new ListarRotinas().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(DeletarRotina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletarRotina1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+// TODO add your handling code here:
+        
         try {
-            // TODO add your handling code here:
-            populatePreps();
+            addRowToTable();
+            updateNamePrep();
         } catch (SQLException ex) {
             Logger.getLogger(ListarAtletas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        updateNamePrep();
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
-        updateNameMod();
+        
+        try {
+            populatePreps();
+            populateMeds();
+            addRowToTable();
+            updateNameMod();
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarAtletas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
         // TODO add your handling code here:
+       
+        try {
+            addRowToTable();
+            updateNameMed();
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarAtletas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jComboBox5ActionPerformed
+    
+    public void addRowToTable() throws SQLException {
+        List<Atleta> alist = null;
+        List<Consulta> clist = null;
+        List<Participante> plist = null;
+        List<Nacao> nlist = null;
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        Object rowData[] = new Object[5];
+        Set<String> row = new HashSet<>();
+        try {
+            clist = cDAO.getConsultas();
+            alist = aDAO.getAtletas();
+            plist = pDAO.getAllAtletas();
+            nlist = nDAO.getNacao();
+            for (int i = 0; i < alist.size() ; i++ ) {
+                //A.Modalidade = x
+                if (alist.get(i).getModalidade().equals(jComboBox4.getSelectedItem())) {
+                    //A.Preparador = y
+                    if (alist.get(i).getPreparador().equals(jComboBox3.getSelectedItem())) {
+                        for (int j = 0; j < clist.size(); j++) {
+                            //C.Atleta = A.NroAtleta
+                            if (alist.get(i).getId().equals(clist.get(j).getAtleta())) {
+                                //C.Medico = z
+                                if (clist.get(j).getMedico().equals(jComboBox5.getSelectedItem())) {
+                                     
+                                    rowData[0] = alist.get(i).getId();
+                                    
+                                    for (int k = 0; k < plist.size(); k++) { 
+                                        if (clist.get(j).getAtleta().equals(plist.get(k).getId()))
+                                            rowData[1] = plist.get(k).getNome();
+                                            
+                                    } 
+                                    rowData[2] = alist.get(i).getPassaporte();
+                                    
+                                    for (int k = 0; k < nlist.size(); k++) {
+                                        if (alist.get(i).getNacao().equals(nlist.get(k).getId()))
+                                            rowData[3] = nlist.get(i).getNome();
+                                            
+                                    }
+                                    rowData[4] = alist.get(i).getData();
+                                    
+                                    model.addRow(rowData);
+                                }
+                            }
+                        }
+                    }
+                } 
+            }
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
+        //for (int i = 0; i < rlist.size(); i++) {
+        //    alist = pDAO.getAtletas(rlist.get(i).getPreparador());
+        //    rowData[0] = rlist.get(i).getId();
+        //    for (int j = 0 ; j < plist.size() ; j++) {
+        //        if (rlist.get(i).getPreparador().equals(plist.get(j).getId())) 
+        //            rowData[1] = plist.get(j).getNome();
+        //    }
+        //    rowData[2] = rlist.get(i).getdiaSemana();
+        //    for (int j = 0 ; j < alist.size() ; j++) {
+        //        if (rlist.get(i).getAtleta().equals(alist.get(j).getId())) 
+        //            rowData[3] = alist.get(j).getNome();
+        //    }
+        //    rowData[4] = rlist.get(i).getRepeticao();
+         //   rowData[5] = rlist.get(i).getDescricao();
+         //   model.addRow(rowData);
+        //}
+    }
     public synchronized void populateModalidades() throws SQLException {
         List<Modalidade> list = null;
         
@@ -394,21 +498,73 @@ public class ListarAtletas extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    public synchronized void populatePreps() throws SQLException {
-        List<Participante> plist = null;
-        List<Participante> alist = null;
-        List<Modalidade> mlist = null;
+    public synchronized void populateMeds() throws SQLException {
+        List<Atleta> alist = null;
+        List<Consulta> clist = null;
+        jComboBox5.removeAllItems();
         try {
-            mlist = mDAO.getModalidades();
-            alist = pDAO.getAllAtletas();
-            plist = pDAO.getAllPreparador();
+            Set<String> meds = new HashSet<>();
+            clist = cDAO.getConsultas();
+            alist = aDAO.getAtletas();
             int i = 0;
-            //System.out.println("List size: " + list.size());
-            while (i < plist.size()) {
-                jComboBox3.addItem(plist.get(i).getId());
+            while (i < alist.size()) {
+                //System.out.println(alist.get(i).getModalidade() + " "+alist.get(i).getPreparador());
+                    if (alist.get(i).getModalidade().equals(jComboBox4.getSelectedItem())) {
+                        //jComboBox3.addItem(alist.get(i).getPreparador());
+                        for (int j = 0; j < clist.size(); j++) { 
+                            if (alist.get(i).getId().equals(clist.get(j).getAtleta())) {
+                                //jComboBox5.addItem(clist.get(j).getMedico());
+                                meds.add(clist.get(j).getMedico());
+                            }
+                        }
+                    }       
                 i++;
             }
-            jLabel2.setText(plist.get(0).getNome());
+            meds.forEach((str) -> {
+                jComboBox5.addItem(str);
+            }); 
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
+    }
+    public synchronized void updateNameMed() {
+        List<Participante> list = null;
+        //PreparadorDAO pDAO = new PreparadorDAO();
+
+        try {   
+            list = pDAO.getAllMedicos();
+            int i = 0;
+            //System.out.println("Update: List size: " + list.size());
+            while (i < list.size()) {
+                if (jComboBox5.getSelectedItem().toString().equals(list.get(i).getId()))
+                    jLabel3.setText(list.get(i).getNome());
+                i++;
+            }
+            
+        }catch(Exception ex){
+            System.out.println("Erro");
+            ex.printStackTrace();
+        }
+    }
+    public synchronized void populatePreps() throws SQLException {
+        List<Atleta> alist = null;
+        jComboBox3.removeAllItems();
+        try {
+            alist = aDAO.getAtletas();
+            int i = 0;
+            Set<String> preps = new HashSet<>();
+            while (i < alist.size()) {
+                //System.out.println(alist.get(i).getModalidade() + " "+alist.get(i).getPreparador());
+                    if (alist.get(i).getModalidade().equals(jComboBox4.getSelectedItem())) {
+                        //jComboBox3.addItem(alist.get(i).getPreparador());
+                        preps.add(alist.get(i).getPreparador());
+                    }       
+                i++;
+            }
+            preps.forEach((str) -> {
+                jComboBox3.addItem(str);
+            }); 
         }catch(Exception ex){
             System.out.println("Erro");
             ex.printStackTrace();
@@ -432,31 +588,7 @@ public class ListarAtletas extends javax.swing.JFrame {
             System.out.println("Erro");
             ex.printStackTrace();
         }
-    }
-    public void addRowToTable() throws SQLException {
-        List<Participante> plist = pDAO.getAllPreparador();
-        List<Rotina> rlist = rDAO.listRotinas();
-        List<Participante> alist = null;
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Object rowData[] = new Object[6];
-        for (int i = 0; i < rlist.size(); i++) {
-            alist = pDAO.getAtletas(rlist.get(i).getPreparador());
-            rowData[0] = rlist.get(i).getId();
-            for (int j = 0 ; j < plist.size() ; j++) {
-                if (rlist.get(i).getPreparador().equals(plist.get(j).getId())) 
-                    rowData[1] = plist.get(j).getNome();
-            }
-            rowData[2] = rlist.get(i).getdiaSemana();
-            for (int j = 0 ; j < alist.size() ; j++) {
-                if (rlist.get(i).getAtleta().equals(alist.get(j).getId())) 
-                    rowData[3] = alist.get(j).getNome();
-            }
-            rowData[4] = rlist.get(i).getRepeticao();
-            rowData[5] = rlist.get(i).getDescricao();
-            model.addRow(rowData);
-        }
-    }
-    
+    }   
     /**
      * @param args the command line arguments
      */

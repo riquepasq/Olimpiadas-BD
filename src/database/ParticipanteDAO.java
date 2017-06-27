@@ -27,7 +27,7 @@ public class ParticipanteDAO {
         List<Participante> list = new ArrayList<>();
         Statement st = null;
         ResultSet rs = null;   
-        String query = "SELECT P.* FROM ATLETA A JOIN PARTICIPANTE P ON A.NROATLETA = P.NROPAR";
+        String query = "SELECT * FROM PARTICIPANTE WHERE TIPO = 'atleta'";
         Participante p;   
         try{
             st = conn.createStatement();
@@ -72,6 +72,28 @@ public class ParticipanteDAO {
         Statement st = null;
         ResultSet rs = null;   
         String query = "SELECT * FROM PARTICIPANTE WHERE TIPO = 'preparador'";
+        Participante p;   
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(query);
+
+            while(rs.next()){
+                p = convertRowToObject(rs);
+                list.add(p);  
+            }
+            return list;
+        }finally{
+            if(st != null)
+                st.close();
+            if(rs != null)
+                rs.close();
+        }
+    }
+    public List<Participante> getAllMedicos() throws SQLException{
+        List<Participante> list = new ArrayList<>();
+        Statement st = null;
+        ResultSet rs = null;   
+        String query = "SELECT * FROM PARTICIPANTE WHERE TIPO = 'medico'";
         Participante p;   
         try{
             st = conn.createStatement();

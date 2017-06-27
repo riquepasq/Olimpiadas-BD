@@ -10,7 +10,7 @@ package database;
  * @author Henrique
  */
 public class Atleta {
-    private int id;
+    private String id;
     private String situacao;
     private String passaporte;
     private String sexo;
@@ -21,7 +21,7 @@ public class Atleta {
     private String nacao;
     private String modalidade;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public void setSituacao(String situacao) {
@@ -52,7 +52,7 @@ public class Atleta {
         this.modalidade = modalidade;
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }    
     public String getSituacao() {

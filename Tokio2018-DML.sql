@@ -127,6 +127,8 @@ INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (8, 'Jameson Joel', 'prepar
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (9, 'Jerrard Truman', 'preparador');
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (10, 'Joana da Silva', 'atleta');
 INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (11, 'Jorge Hayford', 'atleta');
+INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (12, 'James Brand', 'preparador');
+INSERT INTO PARTICIPANTE (NroPar, Nome, Tipo) VALUES (13, 'Garry Bayers', 'atleta');
 
 INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (4, 992561256);
 INSERT INTO TELEFONES (CodigoPar, Numero) VALUES (4, 35615126);
@@ -145,6 +147,8 @@ INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Estado, Nacao, Data
     VALUES (8, 'jamesonjoel@gmail.com', 'jmson$31%j!', 'Pittsburgh', 'Pensilvania', 2, TO_DATE('1992/06/06', 'yyyy/mm/dd'), 'masculino', 'est', '6A8R8Y45'); 
 INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Estado, Nacao, Data_Nasc, Sexo, TipoIdent, Passaporte)
     VALUES (9, 'jerrjarr@gmail.com', 'jjrr199509', 'Vancouver', 'Columbia Britanica', 3, TO_DATE('1995/09/25', 'yyyy/mm/dd'), 'masculino', 'est', '12AH65Y9');
+INSERT INTO PREPARADOR (NroPreparador, Email, Senha, Cidade, Estado, Nacao, Data_Nasc, Sexo, TipoIdent, Passaporte)
+    VALUES (12, 'jamsbran@gmail.com', 'jb123', 'Toronto', 'Ontario', 3, TO_DATE('1994/02/21', 'yyyy/mm/dd'), 'masculino', 'est', '15265Y9');
     
 INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
     VALUES (1, 'regular', '38A1526T', 'feminino', 65.2, 1.60, TO_DATE('1989/07/09', 'yyyy/mm/dd'), 7, 1, 3);
@@ -156,6 +160,8 @@ INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Na
     VALUES (10, 'suspenso', '88N23Q762', 'feminino', 65.0, 1.70, TO_DATE('1992/01/22', 'yyyy/mm/dd'), 7, 1, 3);
 INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
     VALUES (11, 'regular', '18N23Q752', 'masculino', 75.0, 1.80, TO_DATE('1993/02/12', 'yyyy/mm/dd'), 8, 2, 2);
+INSERT INTO ATLETA (NroAtleta, Situacao, Passaporte, Sexo, Peso, Altura, Data_Nasc, Preparador, Nacao, Modalidade)
+    VALUES (13, 'regular', '52N23Q721', 'masculino', 76.1, 1.82, TO_DATE('1994/02/12', 'yyyy/mm/dd'), 12, 3, 2);
 
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
     VALUES (1, 7, 'Segunda', 20, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 1);
@@ -166,7 +172,9 @@ INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atle
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
     VALUES (5, 8, 'Quarta', 30, 'Extensão de tríceps com barra sentado, flexão de braços nas barras paralelas', 11);
 INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
-    VALUES (3, 9, 'Quarta', 15, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 3);
+    VALUES (3, 9, 'Quinta', 15, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 3);
+INSERT INTO ROTINA (NroRotina, Preparador, DiaSemana, Repeticao, Descricao, Atleta)
+    VALUES (6, 12, 'Sexta', 30, 'Agachamento com elevação, levantamento terra romano de uma perna com haltere', 13);
 
 INSERT INTO PREPARO (NroPreparo, Rotina, Descricao)
     VALUES (1, 1, 'Treinar com séries de corrida e caminhada intercaladas permitindo uma maior percepção do esforço físico e um tempo para recuperar o fôlego.');
@@ -203,6 +211,14 @@ INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
     VALUES (2, 2, 5, TO_DATE('2016/12/23', 'yyyy/mm/dd'));
 INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
     VALUES (3, 3, 6, TO_DATE('2017/04/01', 'yyyy/mm/dd'));
+INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
+    VALUES (4, 2, 4, TO_DATE('2017/04/02', 'yyyy/mm/dd'));
+INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
+    VALUES (5, 3, 4, TO_DATE('2017/04/03', 'yyyy/mm/dd'));
+INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
+    VALUES (6, 2, 4, TO_DATE('2016/12/22', 'yyyy/mm/dd'));
+INSERT INTO ATENDIMENTO_CONSULTA(NroConsulta, Atleta, Medico, Data)
+    VALUES (7, 2, 6, TO_DATE('2016/12/24', 'yyyy/mm/dd'));    
     
 INSERT INTO SINTOMAS (CodConsulta, Sintoma)
     VALUES (1, 'Coceira intensa e ardor, falta de ar e dificuldade para engolir e falar');
