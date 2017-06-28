@@ -16,5 +16,6 @@ http://www.java2s.com/Code/Jar/i/Downloaditextpdf510jar.htm
 
 
 #Instructions
+- Open NetBeans Project
 - Run Project
 
